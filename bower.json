@@ -1,0 +1,32 @@
+{
+  "name": "codemirror-element",
+  "version": "0.0.0",
+  "authors": [
+    "Michael Bleigh <mbleigh@mbleigh.com>"
+  ],
+  "description": "A drop-in code editor custom element",
+  "main": "coremirror-element.html",
+  "keywords": [
+    "web-components",
+    "polymer",
+    "codemirror",
+    "ui",
+    "code-editor"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/divshot/codemirror-element",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "codemirror": "~5.2.0",
+    "polymer": "polymer/polymer#0.8.0-rc.7"
+  },
+  "devDependencies": {
+    "iron-component-page": "PolymerElements/iron-component-page#~0.8.1"
+  }
+}

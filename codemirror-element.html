@@ -1,0 +1,53 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="codemirror.html">
+
+<!--
+Creates a full-featured code editor in place using the CodeMirror library. See
+[the CodeMirror manual](https://codemirror.net/doc/manual.html) for a complete
+description of the options and configuration for this element.
+-->
+<dom-module id="codemirror-element">
+  <template>
+    <div id="mirror"></div>
+  </template>
+</dom-module>
+
+<script>
+Polymer({
+  is: 'codemirror-element',
+  properties: {
+    /**
+     * The current text content of the editor.
+     */
+    value: {type: String, notify: true, value: ''},
+    /**
+     * The mode to use. When not given, this will default to the first mode that was loaded.
+     */
+    mode: {type: String, value: 'htmlmixed'},
+    /**
+     * Whether to show line numbers to the left of the editor.
+     */
+    lineNumbers: {type: Boolean, value: false}
+  },
+  ready: function() {
+    this.codemirror = CodeMirror(this.$.mirror, this._config);
+    this.scopeSubtree(this.$.mirror, true);
+  },
+  attached: function() {
+    this.async(this.refresh, 10);
+  },
+  refresh: function() {
+    this.codemirror.refresh();
+  },
+  get _config() {
+    return {
+      value: this.value || '',
+      mode: this.mode,
+      lineNumbers: this.lineNumbers
+    }
+  },
+  splitList: function(str) {
+    return str.split(' ');
+  }
+});
+</script>
